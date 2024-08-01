@@ -10,10 +10,13 @@ Posibles mejoras:
 
 ## Installation
 
+Instalar: 
+- node
+- postgres (configurar credenciales)
+  
 ```bash
 $ npm install
 ```
-Instalar node y postgres
 
 ## Running the app
 
