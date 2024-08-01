@@ -3,10 +3,10 @@
  
 ## Description
 Posibles mejoras:
-Testing
-Agregar la capa de Repositorio para manejo de bases de datos
-Crear seeders
-POR FAVOR DEJENME ENTRAR!!!
+- Testing
+- Agregar la capa de Repositorio para manejo de bases de datos
+- Crear seeders
+- POR FAVOR DEJENME ENTRAR!!!
 
 ## Installation
 
