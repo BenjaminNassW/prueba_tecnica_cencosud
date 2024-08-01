@@ -25,7 +25,7 @@ import { CommentModule } from './comment/comment.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'Zegui2123..',
+      password: '',
       database: 'postgres',
       entities: [User, Profile, Post, Comment, Group],
       synchronize: true,
