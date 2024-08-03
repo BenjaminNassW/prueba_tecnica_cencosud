@@ -1,30 +1,47 @@
 # People API Cencosud
 
- 
-## Description
-Posibles mejoras:
-- Testing
-- Agregar la capa de Repositorio para manejo de bases de datos
-- Crear seeders
-- POR FAVOR DEJENME ENTRAR!!!
+## Overview
 
-## Installation
+This project uses NestJS with TypeORM and PostgreSQL. It includes Docker configurations for a PostgreSQL database and the necessary setup to run the application.
 
-Instalar: 
-- node
-- postgres (configurar credenciales)
-  
-```bash
-$ npm install
-```
+## Prerequisites
 
-## Running the app
+- Docker
+- Docker Compose
+- Node.js (for running the NestJS project)
+
+## Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-# development
-$ npm run start
-
+git clone https://github.com/BenjaminNassW/prueba_tecnica_cencosud
+cd prueba_tecnica_cencosud
+npm install
 ```
+
+## Set Up Docker
+
+### Start Docker
+
+Make sure Docker and Docker Compose are installed and running on your machine.
+
+- Build and Run Docker Containers
+- Navigate to the project directory and run:
+
+```bash
+docker-compose build
+docker-compose up -d
+```
+
+## Start the Application
+
+### Run the NestJS application:
+
+```bash
+npm run start:dev
+```
+
 ## Endpoints
 ```
 type Query {
@@ -54,3 +71,7 @@ type Mutation {
   removeComment(id: Int!): DeleteGQL!
 }
 ```
+
+Posibles mejoras:
+- Testing
+- Agregar la capa de Repositorio para manejo de bases de datos
