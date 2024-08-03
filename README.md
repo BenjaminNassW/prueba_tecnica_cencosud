@@ -6,9 +6,8 @@ This project uses NestJS with TypeORM and PostgreSQL. It includes Docker configu
 
 ## Prerequisites
 
-- Docker
-- Docker Compose
-- Node.js (for running the NestJS project)
+- Docker  https://www.docker.com/products/docker-desktop/
+- Node.js (for running the NestJS project)  https://nodejs.org/en
 
 ## Getting Started
 
