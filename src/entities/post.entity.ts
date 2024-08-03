@@ -18,11 +18,11 @@ export class Post {
   id: number;
 
   @Field(() => User)
-  @ManyToOne(() => User, (user) => user.post)
+  @ManyToOne(() => User, (user) => user.post, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Field(() => Comment)
+  @Field(() => [Comment], { nullable: true })
   @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[];
 

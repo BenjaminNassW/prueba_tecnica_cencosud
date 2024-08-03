@@ -16,11 +16,14 @@ export class ProfileService {
   ) {}
 
   findAll(): Promise<Profile[]> {
-    return this.profileRepository.find();
+    return this.profileRepository.find({ relations: { user: true } });
   }
 
   findOne(id: number): Promise<Profile> {
-    return this.profileRepository.findOneBy({ id });
+    return this.profileRepository.findOne({
+      where: { id },
+      relations: { user: true },
+    });
   }
 
   async createProfile(

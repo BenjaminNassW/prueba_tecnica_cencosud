@@ -18,7 +18,7 @@ scalar DateTime
 type Post {
   id: Int!
   user: User!
-  comments: Comment!
+  comments: [Comment!]
   title: String!
   content: String!
   created_at: DateTime!
@@ -34,22 +34,6 @@ type Profile {
   updated_at: DateTime!
 }
 
-type User {
-  id: Int!
-  firstName: String!
-  lastName: String!
-  email: String!
-  profile: Profile
-  post: Post
-  created_at: DateTime!
-  updated_at: DateTime!
-}
-
-type DeleteUserGQL {
-  status: Int!
-  message: String!
-}
-
 type Group {
   id: Int!
   name: String!
@@ -57,6 +41,23 @@ type Group {
   created_at: DateTime!
   users: [User!]!
   updated_at: DateTime!
+}
+
+type User {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  profile: Profile
+  post: Post
+  groups: [Group!]
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type DeleteUserGQL {
+  status: Int!
+  message: String!
 }
 
 type DeleteGQL {
@@ -69,8 +70,8 @@ type Query {
   findOneUser(id: Int!): User
   findAllProfiles: [Profile!]!
   findOneProfile(id: Int!): Profile
-  findAll: [Post!]!
-  findOne(id: Int!): Post
+  findAllPosts: [Post!]!
+  findOnePost(id: Int!): Post
   findAllGroups: [Group!]!
   findOneGroup(id: Int!): Group
   findAllComments: [Comment!]!
@@ -123,7 +124,7 @@ input UpdateProfileInput {
 input CreatePostInput {
   title: String!
   content: String!
-  userId: Int
+  userId: Int!
 }
 
 input UpdatePostInput {
@@ -152,5 +153,6 @@ input CreateCommentInput {
 
 input UpdateCommentInput {
   postId: Int!
+  commentId: Int!
   content: String!
 }

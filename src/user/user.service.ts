@@ -45,7 +45,7 @@ export class UserService {
   async remove(id: number): Promise<{ message: string; status: number }> {
     const deletedRow = await this.userRepository.delete(id);
     if (deletedRow.affected > 0)
-      return { message: `${id} deleted`, status: 200 };
-    return { message: `${id} not found`, status: 404 };
+      return { message: `User with ID: ${id} deleted`, status: 200 };
+    return { message: `User with ID: ${id} not found`, status: 404 };
   }
 }

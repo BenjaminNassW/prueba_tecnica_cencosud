@@ -10,12 +10,12 @@ export class PostResolver {
   constructor(private readonly postService: PostService) {}
 
   @Query(() => [Post])
-  findAll(): Promise<Post[]> {
+  findAllPosts(): Promise<Post[]> {
     return this.postService.findAll();
   }
 
   @Query(() => Post, { nullable: true })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<Post> {
+  findOnePost(@Args('id', { type: () => Int }) id: number): Promise<Post> {
     return this.postService.findOne(id);
   }
 

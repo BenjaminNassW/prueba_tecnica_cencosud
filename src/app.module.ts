@@ -28,7 +28,7 @@ import { CommentModule } from './comment/comment.module';
       password: 'mypassword',
       database: 'mydatabase',
       entities: [User, Profile, Post, Comment, Group],
-      synchronize: true,
+      synchronize: false,
     }),
     UserModule,
     ProfileModule,

@@ -11,12 +11,12 @@ export class PostService {
   constructor(
     @InjectRepository(Post)
     private postRepository: Repository<Post>,
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
   ) {}
 
   async findAll(): Promise<Post[]> {
-    return this.postRepository.find();
+    return this.postRepository.find({
+      relations: { comments: true, user: true },
+    });
   }
 
   async findOne(id: number): Promise<Post> {
@@ -24,6 +24,7 @@ export class PostService {
       where: { id },
       relations: {
         comments: true,
+        user: true,
       },
     });
   }
@@ -31,6 +32,7 @@ export class PostService {
   async create(createPostInput: CreatePostInput): Promise<Post> {
     return this.postRepository.save({
       ...createPostInput,
+      user: { id: createPostInput.userId } as User,
       created_at: new Date(),
     });
   }

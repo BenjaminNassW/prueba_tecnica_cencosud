@@ -16,11 +16,14 @@ export class CommentService {
   ) {}
 
   findAll(): Promise<Comment[]> {
-    return this.commentRepository.find();
+    return this.commentRepository.find({ relations: { post: true } });
   }
 
   findOne(id: number): Promise<Comment> {
-    return this.commentRepository.findOneBy({ id });
+    return this.commentRepository.findOne({
+      where: { id },
+      relations: { post: true },
+    });
   }
 
   async createComment(
@@ -36,9 +39,10 @@ export class CommentService {
         message: `Post ID: ${createCommentInput.postId} not found.`,
       };
 
-    await this.commentRepository.save({
+    return await this.commentRepository.save({
       content: createCommentInput.content,
       post,
+      created_at: new Date(),
     });
   }
 
@@ -53,9 +57,18 @@ export class CommentService {
         `User with ID ${updateCommentInput.postId} not found`,
       );
     }
+    const comment = await this.commentRepository.findOne({
+      where: { id: updateCommentInput.commentId },
+    });
+    if (!comment) {
+      throw new NotFoundException(
+        `Comment with ID ${updateCommentInput.commentId} not found`,
+      );
+    }
     return await this.commentRepository.save({
       ...post,
-      ...updateCommentInput,
+      ...comment,
+      content: updateCommentInput.content,
       updated_at: new Date(),
     });
   }
@@ -63,7 +76,7 @@ export class CommentService {
   async remove(id: number): Promise<{ message: string; status: number }> {
     const deletedRow = await this.commentRepository.delete(id);
     if (deletedRow.affected > 0)
-      return { message: `profile with ID: ${id} deleted`, status: 200 };
-    return { message: `profile with ID: ${id} not found`, status: 404 };
+      return { message: `comment with ID: ${id} deleted`, status: 200 };
+    return { message: `comment with ID: ${id} not found`, status: 404 };
   }
 }

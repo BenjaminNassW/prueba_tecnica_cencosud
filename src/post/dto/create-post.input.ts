@@ -8,6 +8,6 @@ export class CreatePostInput {
   @Field()
   content: string;
 
-  @Field(() => Int, { nullable: true })
-  userId?: number;
+  @Field(() => Int)
+  userId: number;
 }
