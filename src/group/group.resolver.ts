@@ -10,12 +10,12 @@ export class GroupResolver {
   constructor(private readonly groupService: GroupService) {}
 
   @Query(() => [Group])
-  findAll(): Promise<Group[]> {
+  findAllGroups(): Promise<Group[]> {
     return this.groupService.findAll();
   }
 
   @Query(() => Group, { nullable: true })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<Group> {
+  findOneGroup(@Args('id', { type: () => Int }) id: number): Promise<Group> {
     return this.groupService.findOne(id);
   }
 

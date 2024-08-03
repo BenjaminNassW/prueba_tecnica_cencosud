@@ -14,7 +14,7 @@ export class GroupService {
   ) {}
 
   async findAll(): Promise<Group[]> {
-    return this.groupRepository.find();
+    return this.groupRepository.find({ relations: { users: true } });
   }
 
   async findOne(id: number): Promise<Group> {
@@ -27,8 +27,15 @@ export class GroupService {
   }
 
   async create(createGroupInput: CreateGroupInput): Promise<Group> {
+    const { userIds, ...groupData } = createGroupInput;
+    const users = (userIds || []).map((id) => {
+      const user = new User();
+      user.id = id;
+      return user;
+    });
     return this.groupRepository.save({
-      ...createGroupInput,
+      ...groupData,
+      users,
       created_at: new Date(),
     });
   }

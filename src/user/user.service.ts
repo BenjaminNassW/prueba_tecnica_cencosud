@@ -12,7 +12,7 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  findAll(): Promise<User[]> {
+  findAllUsers(): Promise<User[]> {
     return this.userRepository.find();
   }
 

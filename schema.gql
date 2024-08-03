@@ -40,7 +40,7 @@ type User {
   lastName: String!
   email: String!
   profile: Profile
-  post: Post!
+  post: Post
   created_at: DateTime!
   updated_at: DateTime!
 }
@@ -55,6 +55,7 @@ type Group {
   name: String!
   description: String!
   created_at: DateTime!
+  users: [User!]!
   updated_at: DateTime!
 }
 
@@ -64,10 +65,14 @@ type DeleteGQL {
 }
 
 type Query {
-  findAll: [Group!]!
-  findOne(id: Int!): Group
+  findAllUsers: [User!]!
+  findOneUser(id: Int!): User
   findAllProfiles: [Profile!]!
   findOneProfile(id: Int!): Profile
+  findAll: [Post!]!
+  findOne(id: Int!): Post
+  findAllGroups: [Group!]!
+  findOneGroup(id: Int!): Group
   findAllComments: [Comment!]!
   findOneComment(id: Int!): Comment
 }

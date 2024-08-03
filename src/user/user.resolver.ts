@@ -5,17 +5,17 @@ import { CreateUserInput } from './dto/create-user.input/create-user.input';
 import { DeleteUserGQL } from './gql/deleteUser.gql';
 import { UpdateUserInput } from './dto/create-user.input/update-user.input';
 
-@Resolver()
+@Resolver(() => User)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
   @Query(() => [User])
-  findAll(): Promise<User[]> {
-    return this.userService.findAll();
+  findAllUsers(): Promise<User[]> {
+    return this.userService.findAllUsers();
   }
 
   @Query(() => User, { nullable: true })
-  findOne(@Args('id', { type: () => Int }) id: number): Promise<User> {
+  findOneUser(@Args('id', { type: () => Int }) id: number): Promise<User> {
     return this.userService.findOne(id);
   }
 

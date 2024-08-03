@@ -32,7 +32,7 @@ export class User {
   @OneToOne(() => Profile, (profile) => profile.user)
   profile?: Profile;
 
-  @Field(() => Post)
+  @Field(() => Post, { nullable: true })
   @OneToMany(() => Post, (post) => post.user)
   post: Post[];
 

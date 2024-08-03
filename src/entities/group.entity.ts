@@ -27,6 +27,7 @@ export class Group {
   @Column()
   created_at: Date;
 
+  @Field(() => [User])
   @ManyToMany(() => User)
   @JoinTable({ name: 'user_group' })
   users: User[];
