@@ -70,6 +70,56 @@ type Mutation {
   removeComment(id: Int!): DeleteGQL!
 }
 ```
+## Types
+```
+type Comment {
+  id: Int!
+  content: String!
+  post: Post!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Post {
+  id: Int!
+  user: User!
+  comments: [Comment!]
+  title: String!
+  content: String!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Profile {
+  id: Int!
+  user: User
+  biography: String!
+  dateOfBirth: DateTime!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+type Group {
+  id: Int!
+  name: String!
+  description: String!
+  created_at: DateTime!
+  users: [User!]!
+  updated_at: DateTime!
+}
+
+type User {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  profile: Profile
+  post: Post
+  groups: [Group!]
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+```
 
 Posibles mejoras:
 - Testing
