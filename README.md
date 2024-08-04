@@ -44,10 +44,14 @@ npm run start:dev
 ## Endpoints
 ```
 type Query {
-  findAll: [Group!]!
-  findOne(id: Int!): Group
+  findAllUsers: [User!]!
+  findOneUser(id: Int!): User
   findAllProfiles: [Profile!]!
   findOneProfile(id: Int!): Profile
+  findAllPosts: [Post!]!
+  findOnePost(id: Int!): Post
+  findAllGroups: [Group!]!
+  findOneGroup(id: Int!): Group
   findAllComments: [Comment!]!
   findOneComment(id: Int!): Comment
 }
