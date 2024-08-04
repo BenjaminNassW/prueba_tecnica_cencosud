@@ -6,8 +6,8 @@ This project uses NestJS with TypeORM and PostgreSQL. It includes Docker configu
 
 ## Prerequisites
 
-- Docker  https://www.docker.com/products/docker-desktop/
-- Node.js (for running the NestJS project)  https://nodejs.org/en
+- Docker https://www.docker.com/products/docker-desktop/
+- Node.js (for running the NestJS project) https://nodejs.org/en
 
 ## Getting Started
 
@@ -41,7 +41,12 @@ docker-compose up -d
 npm run start:dev
 ```
 
+## Playground
+
+### To test the application go to http://localhost:3000/graphql
+
 ## Endpoints
+
 ```
 type Query {
   findAllUsers: [User!]!
@@ -74,7 +79,9 @@ type Mutation {
   removeComment(id: Int!): DeleteGQL!
 }
 ```
+
 ## Types
+
 ```
 type Comment {
   id: Int!
@@ -126,5 +133,6 @@ type User {
 ```
 
 Posibles mejoras:
+
 - Testing
 - Agregar la capa de Repositorio para manejo de bases de datos

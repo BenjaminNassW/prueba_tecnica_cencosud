@@ -13,11 +13,16 @@ export class UserService {
   ) {}
 
   findAllUsers(): Promise<User[]> {
-    return this.userRepository.find();
+    return this.userRepository.find({
+      relations: { profile: true, post: true, groups: true },
+    });
   }
 
   findOne(id: number): Promise<User> {
-    return this.userRepository.findOneBy({ id });
+    return this.userRepository.findOne({
+      where: { id },
+      relations: { profile: true, post: true, groups: true },
+    });
   }
 
   async create(createUserInput: CreateUserInput): Promise<User> {
